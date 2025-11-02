@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Immersive Blogs
 
-## Getting Started
+## What is this Project?
 
-First, run the development server:
+### Origin
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This is a _work-in-progress_ website, which I am creating to use as a way to share some of my personal experiences with the hopes of helping you, the reader, and others, to find peace, direction, and meaning in life.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I used to write regular blogs and share them online, but it didn't feel engaging enough. I felt that my writing alone wasn't enough to really _move_ those who read it—so, I thought about creating an _immersive_ blog website to share my blogs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> You can find out what makes it "immersive" in the section "Features."
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Why Make This?
 
-## Learn More
+I've done a lot of spiritual work to connect with the person I am deep down, and I realized that my purpose in life is to use my creative abilities to spread love and empathy, and to be a light in others' lives to find peace through _presence._ I'm working a lot to maintain a living situation, and being able to work on projects like these with the time I have helps me create a fulfilling life.
 
-To learn more about Next.js, take a look at the following resources:
+While I want to do more than just create immersive blogs, this provides me with an outlet to be authentic and share my experiences in a way that is engaging, soothing, and fun.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+By default, opening an immersive blog treats you with the following features:
 
-## Deploy on Vercel
+- Voiceover
+- Dynamic Music
+- Dynamic Text/Dialogue
+- Animated Character Portraits
+- Navigation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If desired, there are options to change the settings:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Disable/Enable Autoplay.** The blog will normally progress from start to finish without user input, though this can be disabled so that the user must click (or press a button) to continue after the current set of dialogue ends.
+2. **Disable/Enable Immersion.**
+
+## Mechanics
+
+To have dynamic points, each immersive blog contains the following files:
+
+- A `.md` (markdown) file containing the writing of the blog.
+  - This website automatically separates sections of dialogue by checking the headers and text.
+- ...
