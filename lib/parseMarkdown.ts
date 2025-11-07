@@ -1,4 +1,12 @@
-var showdown = require('showdown'),
-  converter = new showdown.Converter(),
-  text = '# hey, I have an idea.',
-  html = converter.makeHtml(text);
+import showdown from 'showdown';
+
+export function parseMarkdown(markdown: string): string {
+  const converter = new showdown.Converter({
+    tables: true,
+    strikethrough: true,
+    emoji: true,
+  });
+
+  const html = converter.makeHtml(markdown);
+  return html;
+}

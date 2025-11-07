@@ -1,8 +1,12 @@
 # Example Blog Title!
 
+<img src="../../../public/assets/blogs/1_Introduction/banner-workplace-compressed.jpg"></img>
+
+This is random text below the image and main title. It will be used for the "teaser text," or the text shown when scrolling.
+
 ## Example Header 1
 
-This is random text below header 1.
+Thing.
 
 ### Example Sub-Header 1
 
