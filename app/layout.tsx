@@ -1,15 +1,26 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+// * Use Custom Fonts * //
+const cabin = localFont({
+  src: [
+    {
+      path: '../public/fonts/Cabin-VariableFont_wdth,wght.ttf',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Cabin-Italic-VariableFont_wdth,wght.ttf',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-cabin',
+  display: 'swap',
 });
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const yesevaOne = localFont({
+  src: '../public/fonts/YesevaOne-Regular.ttf',
+  variable: '--font-yeseva-one',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -24,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${cabin.variable} ${yesevaOne.variable} antialiased`}>
         {children}
       </body>
     </html>
