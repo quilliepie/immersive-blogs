@@ -4,7 +4,6 @@ import { parseMarkdown } from '@/lib/parseMarkdown';
 import * as cheerio from 'cheerio';
 
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 interface BlogPageProps {
@@ -51,6 +50,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <main>
         <h1>{title}</h1>
       </main>
+      <Footer />
     </div>
   );
 }

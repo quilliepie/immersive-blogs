@@ -4,7 +4,6 @@ import { parseMarkdown } from '@/lib/parseMarkdown';
 
 import * as cheerio from 'cheerio';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MainHeader from '@/components/MainHeader';
 
@@ -61,8 +60,6 @@ export default function Home() {
 
     return { id, title, previewText, firstImageSource, html, authors, date };
   });
-
-  // ! REVIEW all the code above and actually try to understand it!! //
 
   // * Render the page. *
   return (

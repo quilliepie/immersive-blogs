@@ -33,8 +33,30 @@ If desired, there are options to change the settings:
 
 ## Mechanics
 
+### Design & Flow
+
 To have dynamic points, each immersive blog contains the following files:
 
 - A `.md` (markdown) file containing the writing of the blog.
   - This website automatically separates sections of dialogue by checking the headers and text.
 - ...
+
+### Tools Used
+
+#### NPM Packages
+
+Below is a list of packages I've used to help me with this project, and what they do.
+
+- [showdown](https://github.com/showdownjs/showdown)
+  - This is a simple markdown to HTML converter.
+  - I use it in this project with the utility file `parseMarkdown.ts` to take the content from the `.md` files for each blog and convert them into HTML, which, when converted, is just a very long string.
+    - `parseMarkdown.ts` exports a function which creates an instance of `showdown.Converter` which also interprets tables, strikethroughs and emoji. I provide the markdown file as an argument and just return the HTML as a string.
+    - I then use `cheerio` (more on that below) to grab specific parts of the blog to help with rendering previews and separating content for animations and such.
+- [cheerio](https://www.npmjs.com/package/cheerio)
+
+#### Built-in Tools (such as `fs` and `path`)
+
+To help with understanding how this project was made, I'll go over how `fs` and `path` are used throughout the project.
+
+1. `fs` refers to Node.js' "[File System Module](https://www.w3schools.com/nodejs/nodejs_filesystem.asp)." In this project, it's primarily used for obtaining the directory of required files and reading those files.
+2. `path`
