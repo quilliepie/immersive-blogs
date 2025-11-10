@@ -35,6 +35,22 @@ If desired, there are options to change the settings:
 
 ### Design & Flow
 
+#### Blog: The User's Experience From Start to Finish
+
+The list below shows the steps of the user's experience when listening to an immersive blog, and how it's implemented mechanically.
+
+1. **Introduction:** On page load, there is a 3-second introduction animation where the title is shown in large text with the thumbnail. Music begins fading in at this point and reaches its fullest after the 3 seconds pass.
+   - After the title and thumbnail are shown, the preview text appears below the title and thumbnail in full. The narrator begins speaking with the preview text's appearance, and this shot is held until the preview text has been finished.
+2. **Blog:** After the preview text is read, all of the content on the page fades out and is replaced by the main blog UI:
+   - **Mobile UI:**
+     - The narrator's character art appears behind the paragraph and is unique for each paragraph (based on `data.json`). The paragraph appears as a text box below the character near the bottom of the screen.
+       - If there is too much text in the paragraph, the text scrolls within the text box after a delay where the narrator reads. It stops scrolling once the end of the paragraph is reached. _This is done so the text box doesn't cover the narrator art._
+     - At the top of the page, the title and current sections (based on previous _header_ elements) are displayed. This is displayed above the character art.
+     - There is an icon at the top right of the screen which the user can click at any time to switch to a reading format.
+   -
+
+#### Other Design Points
+
 To have dynamic points, each immersive blog contains the following files:
 
 - A `.md` (markdown) file containing the writing of the blog.
