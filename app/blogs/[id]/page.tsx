@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { parseBlogData } from '@/lib/parseBlogData';
 import { parseMarkdown } from '@/lib/parseMarkdown';
 import * as cheerio from 'cheerio';
 
@@ -10,45 +11,18 @@ interface BlogPageProps {
   params: { id: string } | Promise<{ id: string }>;
 }
 
-// ! Review all the code below; it is temporary.
-
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { id } = await params; // unwrap the Promise
-
-  const blogsDirectory = path.join(process.cwd(), 'content', 'blogs');
-  const folder = path.join(blogsDirectory, id);
-
-  console.log('blogsDirectory:', blogsDirectory);
-  console.log('folder path:', folder);
-
-  if (!fs.existsSync(folder)) return <p>Blog not found.</p>;
-
-  const markdownPath = path.join(folder, 'blog.md');
-  const jsonPath = path.join(folder, 'data.json');
-
-  console.log('markdownPath:', markdownPath);
-  console.log('jsonPath:', jsonPath);
-
-  const markdown = fs.readFileSync(markdownPath, 'utf-8');
-  const html = parseMarkdown(markdown);
-  const $ = cheerio.load(html);
-  const title = $('h1').first().text().trim() || 'Untitled Post';
-
-  let authors: string[] = [];
-  let date: string = '';
-  try {
-    const jsonData = fs.readFileSync(jsonPath, 'utf-8');
-    const parsed = JSON.parse(jsonData);
-    authors = parsed.authors || [];
-    date = parsed.date || '';
-  } catch (error) {
-    console.warn(`Failed to read data.json for ${id}:`, error); // ✅ use id
-  }
-
   return (
-    <div>
-      <main>
-        <h1>{title}</h1>
+    <div className='flex flex-col min-h-screen items-center'>
+      <header className='p-8 flex flex-col gap-2'>
+        <h1>Hi! Great things are coming to this page!</h1>
+        <p>
+          And it's gonna be very, very complex! I'm not sure how I'll do it yet, but I
+          will! 'Cause I really really wanna~
+        </p>
+      </header>
+      <main className='p-8 flex flex-col gap-8 top-border w-full mx-auto'>
+        <p>Main content stuff?</p>
       </main>
       <Footer />
     </div>

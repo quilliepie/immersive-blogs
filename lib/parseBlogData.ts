@@ -8,15 +8,12 @@ import { BlogData } from '@/app/types';
  * @returns "BlogData," though "any" is used in case of error.
  */
 export function parseBlogData(filePath: string): any {
-  fs.readFile(filePath, 'utf-8', (err, jsonString: string) => {
-    if (err) {
-      console.error('Error reading file:', err);
-      return;
-    }
+  try {
+    const jsonString = fs.readFileSync(filePath, 'utf-8');
     const data: BlogData = JSON.parse(jsonString);
-    console.log('Parsed JSON Data:');
-    console.log(data);
-
     return data;
-  });
+  } catch (err) {
+    console.error('Error reading file:', err);
+    return null;
+  }
 }

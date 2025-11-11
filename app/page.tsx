@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { BlogData, HtmlPreviewData } from './types';
+import { parseBlogData } from '@/lib/parseBlogData';
 import { parseMarkdown } from '@/lib/parseMarkdown';
+import { getHtmlPreview } from '@/lib/getHtmlPreview';
 
-import * as cheerio from 'cheerio';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import MainHeader from '@/components/MainHeader';
@@ -18,50 +20,22 @@ export default function Home() {
     const markdownPath = path.join(blogsDirectory, folder, 'blog.md');
     const jsonPath = path.join(blogsDirectory, folder, 'data.json');
     const markdown = fs.readFileSync(markdownPath, 'utf-8');
-    let html = parseMarkdown(markdown);
+    const html = parseMarkdown(markdown);
     const id = parseInt(folder);
+    getHtmlPreview(html);
 
-    // Correct image paths from "../../../public" to "/" since the dir is changed.
-    html = html.replace(/src=["'](?:\.\.\/)+public(.*?)["']/g, 'src="$1"');
+    const previewData: HtmlPreviewData = getHtmlPreview(html);
+    const title = previewData.title;
+    const previewText = previewData.previewText;
+    const firstImageSource = previewData.firstImageSource;
 
-    // * Load HTML into Cheerio & grab data!
-    // Grab title, first image & initialize "previewText."
-    const $ = cheerio.load(html);
-    const title = $('h1').first().text().trim() || 'Untitled Post';
-    const firstImageSource = $('img').first().attr('src') || '/default-thumbnail.jpg';
-    $('img').first().remove();
-    let previewText = '';
-
-    // ? What is this?
-    $('p').each((_, el) => {
-      const text = ($(el).html() ?? '').trim();
-      // Return found preview text & close the loop.
-      if (text && !/^<img/i.test(text)) {
-        previewText = text;
-        return false;
-      }
-    });
-
-    // Error handling in case text is not found.
-    if (!previewText) previewText = 'No preview available.';
-
-    // * Read JSON Data (Authors & date)
-    // The "instructions" for animations and such are only used on the blog's unique page.
-    let authors: string[] = [];
-    let date: string = '';
-    try {
-      const jsonData = fs.readFileSync(jsonPath, 'utf-8');
-      const parsed = JSON.parse(jsonData);
-      authors = parsed.authors || [];
-      date = parsed.date || '';
-    } catch (error) {
-      console.warn(`Failed to read or parse data.json for blog "${id}":`, error);
-    }
+    const jsonData: BlogData = parseBlogData(jsonPath);
+    const authors: string[] = jsonData.authors;
+    const date: string = jsonData.date;
 
     return { id, title, previewText, firstImageSource, html, authors, date };
   });
 
-  // * Render the page. *
   return (
     <div className='flex flex-col min-h-screen items-center justify-center'>
       <MainHeader />
