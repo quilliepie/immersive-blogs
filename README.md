@@ -43,11 +43,15 @@ The list below shows the steps of the user's experience when listening to an imm
    - After the title and thumbnail are shown, the preview text appears below the title and thumbnail in full. The narrator begins speaking with the preview text's appearance, and this shot is held until the preview text has been finished.
 2. **Blog:** After the preview text is read, all of the content on the page fades out and is replaced by the main blog UI:
    - **Mobile UI:**
-     - The narrator's character art appears behind the paragraph and is unique for each paragraph (based on `data.json`). The paragraph appears as a text box below the character near the bottom of the screen.
+     - The narrator's **character art appears** behind the paragraph and is unique for each paragraph (based on `data.json`). The paragraph appears as a text box below the character near the bottom of the screen.
        - If there is too much text in the paragraph, the text scrolls within the text box after a delay where the narrator reads. It stops scrolling once the end of the paragraph is reached. _This is done so the text box doesn't cover the narrator art._
-     - At the top of the page, the title and current sections (based on previous _header_ elements) are displayed. This is displayed above the character art.
+     - At the top of the page, the **title** and **headers** (based on previous _header_ elements) are displayed. This is displayed above the character art.
+     - If an **image** is present in the current section, an animation will move it into view and it will cover the character's body and sit just above the text box. There will be a button on the top left of the image to slide the picture up and down behind the textbox to move it into and out of view. By default, it stays in front of the character until the section has passed.
      - There is an icon at the top right of the screen which the user can click at any time to switch to a reading format.
-   -
+3. **Ending:** After the final paragraph, an animation will play with the text "Thank you for listening!" A few options will be presented (they're listed below).
+   - **Replay:** An arrow-loop symbol which will start the blog over.
+   - **Next Blog:** A hyperlink which takes the user to the next blog.
+   - **Return to Blogs:** A hyperlink which returns the user to the page with all the blog previews and links.
 
 #### Other Design Points
 

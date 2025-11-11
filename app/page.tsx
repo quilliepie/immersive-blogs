@@ -66,8 +66,8 @@ export default function Home() {
     <div className='flex flex-col min-h-screen items-center justify-center'>
       <MainHeader />
       <main className='p-8 flex flex-col gap-8 top-border w-full mx-auto'>
-        <section>
-          <h2 className='text-center'>Blogs</h2>
+        <section className='text-center'>
+          <h2>Blogs</h2>
           <p>Below is a list of my most recent blogs:</p>
         </section>
         <ul className='flex flex-col gap-4'>
